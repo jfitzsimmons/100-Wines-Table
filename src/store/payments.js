@@ -9,8 +9,6 @@ const mutations = {
   SET_PAYMENT (state, { payment }) {
     const data = payment.data()
     state.payments = data;
-    console.log('state.payments');
-    console.log(data);
   }
 }
 

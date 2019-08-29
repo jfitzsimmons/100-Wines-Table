@@ -15,8 +15,6 @@
       },
 
       get () {
-        console.log('test get  init');
-      //  console.log(this.$store.dispatch('payments/get'));
         this.$store.dispatch('payments/get')
       }
     }

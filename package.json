@@ -14,6 +14,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "firebase": "^6.4.2",
+    "mem": "^5.1.1",
     "uuid": "^3.3.3",
     "vue": "^2.5.11",
     "vue-good-table": "^2.18.0",

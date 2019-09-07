@@ -1,8 +1,62 @@
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #606266;
+}
+
 .flex {
   display: flex;
 }
 
 .notes {
-  color: blue;
-  width: 28%
+  min-width: 28%;
+  max-width: 28%;
+  position: fixed;
+  right: 16px;
+  top: 26%;
+display: flex;
+    align-items: center;
+}
+.notes__content {
+  background: #eefeff;
+  border: 2px solid #dcdfe6;
+  padding: 2%;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+}
+
+.arrow-left {
+  width: 0px;
+    height: 0px;
+    border-top:    20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right:  20px solid #dcdfe6;
+  }
+
+.vgt-wrap {
+  margin-right: 30%;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+  table.vgt-table td {
+    padding: 15px;
+  }
+  th span {
+    font-size: 14px;
+    font-weight: bold;
+    color: 4A4A4A;
+    text-transform: uppercase;
+  }
+  input:focus{
+    border: 1px solid #63C9FE;
+  }
+  .vgt-table thead th.sorting-asc:after
+  {
+    border-bottom: 6px solid #329FEE;
+  }
+  .vgt-table thead th.sorting-desc:after {
+    border-top: 6px solid #329FEE;
+  }
+}
+
+.table-row:hover {
+  background: #eefeff;
 }

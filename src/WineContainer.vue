@@ -3,6 +3,7 @@
   <vue-good-table
     :columns="columns"
     :rows="wines"
+    row-style-class="table-row"
     @on-row-mouseenter="onRowMouseover"
     :sort-options="{
       enabled: true,
@@ -14,8 +15,12 @@
     :search-options="{
       enabled: true,
       skipDiacritics: true,
+      placeholder: 'Search Top 100 Wines',
     }"  />
-    <div class="notes">{{note}}</div>
+    <div class="notes">
+    <div class="arrow-left"></div>
+    <div class="notes__content">{{note}}</div>
+    </div>
 </div>
 </template>
 
@@ -83,7 +88,7 @@ export default {
           filterable: true,
           filterOptions: {
             enabled: true, // enable filter for this column
-            placeholder: '... by Score', // placeholder for filter input
+            placeholder: 'Filter', // placeholder for filter input
             filterValue: '', // initial populated value for this filter
             filterDropdownItems: [], // dropdown (with selected values) instead of text input
             filterFn: this.columnFilterFn, //custom filter function that
@@ -126,7 +131,7 @@ export default {
           filterable: true,
           filterOptions: {
             enabled: true, // enable filter for this column
-            placeholder: '... by Vintage', // placeholder for filter input
+            placeholder: 'Filter', // placeholder for filter input
             filterValue: '', // initial populated value for this filter
             filterDropdownItems: [], // dropdown (with selected values) instead of text input
             filterFn: this.columnFilterFn, //custom filter function that
@@ -141,7 +146,7 @@ export default {
           filterable: true,
           filterOptions: {
             enabled: true, // enable filter for this column
-            placeholder: '... by Color', // placeholder for filter input
+            placeholder: 'Filter Color', // placeholder for filter input
             filterValue: '', // initial populated value for this filter
             filterDropdownItems: [], // dropdown (with selected values) instead of text input
             filterFn: this.columnFilterFn, //custom filter function that
@@ -155,7 +160,7 @@ export default {
             filterable: true,
             filterOptions: {
               enabled: true, // enable filter for this column
-              placeholder: '... by Region', // placeholder for filter input
+              placeholder: 'Filter Region', // placeholder for filter input
               filterValue: '', // initial populated value for this filter
               filterDropdownItems: [], // dropdown (with selected values) instead of text input
               filterFn: this.columnFilterFn, //custom filter function that

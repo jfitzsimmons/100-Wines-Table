@@ -1,98 +1,65 @@
 <template>
-<div class="flex">
-  <vue-good-table
-    :columns="columns"
-    :rows="wines"
-    row-style-class="table-row"
-    @on-row-mouseenter="onRowMouseover"
-    :sort-options="{
-      enabled: true,
-      initialSortBy: [
-        {field: 'score', type: 'desc'},
-        {field: 'winery_full', type: 'asc'}
-      ],
-    }"
-    :search-options="{
-      enabled: true,
-      skipDiacritics: true,
-      placeholder: 'Search Top 100 Wines',
-    }"  />
+  <div class="flex">
+    <vue-good-table
+      :columns="columns"
+      :rows="wines"
+      row-style-class="table-row"
+      @on-row-mouseenter="onRowMouseover"
+      :sort-options="{
+        enabled: true,
+        initialSortBy: [
+          {field: 'score', type: 'desc'},
+          {field: 'winery_full', type: 'asc'}
+        ],
+      }"
+      :search-options="{
+        enabled: true,
+        skipDiacritics: true,
+        placeholder: 'Search Top 100 Wines',
+      }"  />
     <div class="notes">
-    <div class="arrow-left"></div>
-    <div class="notes__content">{{note}}</div>
+      <div class="arrow-left"></div>
+      <div class="notes__content">{{note}}</div>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
-import Vue from 'vue'
-import EditInput from './EditInput'
-import WineNote from './WineNote'
+  import {mapState} from 'vuex'
+  import Vue from 'vue'
 
-const noteElement = document.getElementById('notes');
-
-export default {
-  name: 'WineContainer',
-  props: {
-    wines: {
-      type: Array,
-      required: false
+  export default {
+    name: 'WineContainer',
+    props: {
+      wines: {
+        type: Array,
+        required: false
+      },
+      note: {
+        type: String,
+        default: "Hover over a row to see the note"
+      }
     },
-    note: {
-      type: String,
-      default: "Another damn test"
-    }
-  },
-  components: {
-    EditInput,
-    WineNote
-  },
-  methods: {
-    onCellClick(params) {
-/*
-      var ComponentClass = Vue.extend(EditInput)
-      var instance = new ComponentClass({
-        propsData: {
-          type: 'primary'
-        }
-      })
-      instance.$mount() // pass nothing
-              console.log(this.$refs)
-      this.$refs.container.appendChild(instance.$el)
-*/
-      /*
-            console.dir(params.row);
-            console.dir(params.column);
-            console.dir(params.rowIndex);
-            console.dir(params.event);
-            */
-
+    methods: {
+      onRowMouseover(params) {
+        this.note = params.row.note;
+      }
     },
-    onRowMouseover(params) {
-    //  console.log(noteElement);
-    this.note = params.row.note;
-    }
-  },
-
-  data() {
-    return {
-      note: 'TESTING PASSED PRO OF NOTE FROM WINE CONTAINER',
-      columns: [{
+    data() {
+      return {
+        columns: [{
           label: 'Score',
           field: 'score',
           width: '40px',
           type: 'number',
           filterable: true,
           filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: 'Filter', // placeholder for filter input
-            filterValue: '', // initial populated value for this filter
-            filterDropdownItems: [], // dropdown (with selected values) instead of text input
-            filterFn: this.columnFilterFn, //custom filter function that
-            trigger: 'enter', //only trigger on enter not on keyup
+            enabled: true,
+            placeholder: 'Filter',
+            filterValue: '',
+            filterDropdownItems: [],
+            filterFn: this.columnFilterFn,
+            trigger: 'enter',
           },
         },
         {
@@ -101,12 +68,12 @@ export default {
           type: 'string',
           filterable: true,
           filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: 'Filter by Winery', // placeholder for filter input
-            filterValue: '', // initial populated value for this filter
-            filterDropdownItems: [], // dropdown (with selected values) instead of text input
-            filterFn: this.columnFilterFn, //custom filter function that
-            trigger: 'enter', //only trigger on enter not on keyup
+            enabled: true,
+            placeholder: 'Filter by Winery',
+            filterValue: '',
+            filterDropdownItems: [],
+            filterFn: this.columnFilterFn,
+            trigger: 'enter', 
           },
         },
         {
@@ -115,12 +82,12 @@ export default {
           type: 'string',
           filterable: true,
           filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: 'Filter by Wine', // placeholder for filter input
-            filterValue: '', // initial populated value for this filter
-            filterDropdownItems: [], // dropdown (with selected values) instead of text input
-            filterFn: this.columnFilterFn, //custom filter function that
-            trigger: 'enter', //only trigger on enter not on keyup
+            enabled: true,
+            placeholder: 'Filter by Wine',
+            filterValue: '',
+            filterDropdownItems: [],
+            filterFn: this.columnFilterFn,
+            trigger: 'enter',
           },
         },
         {
@@ -130,12 +97,12 @@ export default {
           type: 'string',
           filterable: true,
           filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: 'Filter', // placeholder for filter input
-            filterValue: '', // initial populated value for this filter
-            filterDropdownItems: [], // dropdown (with selected values) instead of text input
-            filterFn: this.columnFilterFn, //custom filter function that
-            trigger: 'enter', //only trigger on enter not on keyup
+            enabled: true,
+            placeholder: 'Filter',
+            filterValue: '',
+            filterDropdownItems: [],
+            filterFn: this.columnFilterFn,
+            trigger: 'enter',
           },
         },
         {
@@ -145,30 +112,29 @@ export default {
           type: 'string',
           filterable: true,
           filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: 'Filter Color', // placeholder for filter input
-            filterValue: '', // initial populated value for this filter
-            filterDropdownItems: [], // dropdown (with selected values) instead of text input
-            filterFn: this.columnFilterFn, //custom filter function that
-            trigger: 'enter', //only trigger on enter not on keyup
+            enabled: true,
+            placeholder: 'Filter Color',
+            filterValue: '',
+            filterDropdownItems: [],
+            filterFn: this.columnFilterFn,
+            trigger: 'enter',
           },
         },
-          {
-            label: 'Region',
-            field: 'region',
-            type: 'string',
-            filterable: true,
-            filterOptions: {
-              enabled: true, // enable filter for this column
-              placeholder: 'Filter Region', // placeholder for filter input
-              filterValue: '', // initial populated value for this filter
-              filterDropdownItems: [], // dropdown (with selected values) instead of text input
-              filterFn: this.columnFilterFn, //custom filter function that
-              trigger: 'enter', //only trigger on enter not on keyup
-            },
+        {
+          label: 'Region',
+          field: 'region',
+          type: 'string',
+          filterable: true,
+          filterOptions: {
+            enabled: true,
+            placeholder: 'Filter Region',
+            filterValue: '',
+            filterDropdownItems: [],
+            filterFn: this.columnFilterFn,
+            trigger: 'enter',
           },
-      ],
-    };
-  },
-};
+        }],
+      };
+    },
+  };
 </script>

@@ -1,35 +1,38 @@
 <template>
-  <div>
-    <PaymentContainer
-      v-if="payments"
-      :payments="payments.payments.payments"
-    />
-  </div>
+<div>
+  <Initialize />
+  <WineContainer v-if="wines" :wines="wines.wines.wine" />
+</div>
 </template>
 
 <script>
-import PaymentContainer from './PaymentContainer.vue'
-
-import { mapState } from 'vuex'
+import WineContainer from './WineContainer.vue'
+import Initialize from './Initialize.vue'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'app',
 
   components: {
-    PaymentContainer
+    WineContainer,
+    Initialize
   },
 
   computed: {
     ...mapState({
-      payments: 'payments',
+      wines: 'wines',
     })
   },
- 
+
   beforeCreate() {
-    this.$store.dispatch('payments/get');
+    this.$store.dispatch('wines/get');
   },
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900&subset=latin-ext');
+  @import "./css/style.scss";
 </style>

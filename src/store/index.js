@@ -7,7 +7,7 @@ import Firebase from 'Firebase'
 import 'Firebase/firestore'
 import config from '../config'
 
-import payments from './payments'
+import wines from './wines'
 
 Firebase.initializeApp(config)
 
@@ -19,6 +19,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state,
   modules: {
-    payments
+    wines
   }
 })

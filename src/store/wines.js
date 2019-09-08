@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import uuidv4 from 'uuid/v4'
 
 const state = {
   wines: {}
@@ -20,7 +19,10 @@ const actions = {
   },
   seed ({ rootState }) {
     let wineRef = rootState.db.collection('winelist')
-
+/**
+ * I nitially seed the DB with the supplied JSON
+ */
+/**
   wineRef.add({
     wine: [{
       "id": "451874",
@@ -1723,6 +1725,7 @@ const actions = {
         "top100_rank": 100
       }]
     })
+ */
   }
 }
 

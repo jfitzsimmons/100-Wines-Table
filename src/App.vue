@@ -1,6 +1,9 @@
 <template>
   <div>
+  <!--
+   ! Left this comment to show the component I created to seed firebase
     <Initialize />
+    -->
     <WineContainer v-if="wines" :wines="wines.wines.wine" />
   </div>
 </template>

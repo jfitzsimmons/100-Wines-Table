@@ -17,19 +17,21 @@
         skipDiacritics: true,
         placeholder: 'Search Top 100 Wines',
       }"  />
-    <div class="notes">
-      <div class="arrow-left"></div>
-      <div class="notes__content">{{note}}</div>
-    </div>
-  </div>
+
+      <WineNote :note="mutableNote" :pos="mutablePos" />
+</div>
 </template>
 
 <script>
+  import WineNote from './WineNote.vue'
   import {mapState} from 'vuex'
   import Vue from 'vue'
 
   export default {
     name: 'WineContainer',
+    components: {
+      WineNote,
+    },
     props: {
       wines: {
         type: Array,
@@ -38,15 +40,24 @@
       note: {
         type: String,
         default: "Hover over a row to see the note"
-      }
+      },
+      pos: {
+        type: String,
+        default: '0'
+      },
     },
     methods: {
       onRowMouseover(params) {
-        this.note = params.row.note;
+        let rowHover = document.querySelectorAll('tbody > tr')[params.pageIndex];
+        let top = window.scrollY + rowHover.getBoundingClientRect().bottom + 25;
+        this.mutableNote = params.row.note;
+        this.mutablePos = top.toString();
       }
     },
     data() {
       return {
+        mutablePos: this.pos,
+        mutableNote: this.note,
         columns: [{
           label: 'Score',
           field: 'score',
@@ -73,7 +84,7 @@
             filterValue: '',
             filterDropdownItems: [],
             filterFn: this.columnFilterFn,
-            trigger: 'enter', 
+            trigger: 'enter',
           },
         },
         {

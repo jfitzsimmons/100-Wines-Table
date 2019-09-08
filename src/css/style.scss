@@ -1,43 +1,48 @@
 $light-gray: #eefeff;
+$dark-gray: #606266;
+$gray: #dcdfe6;
+$dull-blue: #329FEE;
+$bright-blue: #63C9FE;
 
 body {
   font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #606266;
+  color: $dark-gray;
+  overflow:auto;
 }
 
 .flex {
   display: flex;
+  justify-content: center;
 }
 
 .notes {
   min-width: 28%;
-  max-width: 28%;
-  position: fixed;
-  right: 16px;
-  top: 26%;
+  max-width: 75%;
+  position: absolute;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .notes__content {
   background: $light-gray;
-  border: 2px solid #dcdfe6;
+  border: 2px solid $gray;
   padding: 2%;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+  font-size: .9em;
 }
 
-.arrow-left {
+.arrow-up {
   width: 0px;
   height: 0px;
-  border-top:    20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-right:  20px solid #dcdfe6;
+  border-left:    20px solid transparent;
+  border-bottom: 20px solid $gray;
+  border-right:  20px solid transparent;
   }
 
 .vgt-wrap {
-  margin-right: 30%;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
   table.vgt-table td {
     padding: 15px;
@@ -49,17 +54,23 @@ body {
     text-transform: uppercase;
   }
   input:focus{
-    border: 1px solid #63C9FE;
+    border: 1px solid $bright-blue;
   }
   .vgt-table thead th.sorting-asc:after
   {
-    border-bottom: 6px solid #329FEE;
+    border-bottom: 6px solid $dull-blue;
   }
   .vgt-table thead th.sorting-desc:after {
-    border-top: 6px solid #329FEE;
+    border-top: 6px solid $dull-blue;
   }
 }
 
 .table-row:hover {
   background: $light-gray;
+}
+
+@media (min-width:750px) {
+  .notes__content {
+    font-size: 1em;
+  }
 }

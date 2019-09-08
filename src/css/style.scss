@@ -3,6 +3,7 @@ $dark-gray: #606266;
 $gray: #dcdfe6;
 $dull-blue: #329FEE;
 $bright-blue: #63C9FE;
+$font-size: 0.8;
 
 body {
   font-family: 'Nunito Sans', sans-serif;
@@ -21,17 +22,23 @@ body {
   min-width: 28%;
   max-width: 75%;
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
+}
+
+.notes__header {
+  font-weight: bold;
+  margin: 0;
 }
 
 .notes__content {
   background: $light-gray;
   border: 2px solid $gray;
+  border-radius: 6px;
   padding: 2%;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
-  font-size: .9em;
+  font-size: $font-size + em;
 }
 
 .arrow-up {
@@ -44,11 +51,10 @@ body {
 
 .vgt-wrap {
   box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
-  table.vgt-table td {
-    padding: 15px;
+  table.vgt-table {
+    font-size: $font-size + em;
   }
   th span {
-    font-size: 14px;
     font-weight: bold;
     color: 4A4A4A;
     text-transform: uppercase;
@@ -65,12 +71,46 @@ body {
   }
 }
 
+.color {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  span {
+    border-radius: 6px;
+    border: 1px solid $dark-gray;
+    padding: 6px 10px;
+    color: $light-gray;
+  }
+  &.red span {
+    background: #730202;
+  }
+  &.dessert span {
+    background: #BF0404;
+  }
+  &.white span {
+    color: $dark-gray;
+  }
+  &.sparkling span {
+    background: #FFFBDB;
+    color: $dark-gray;
+  }
+  &.blush span {
+    background: #D18080;
+  }
+}
+
+
 .table-row:hover {
   background: $light-gray;
 }
 
 @media (min-width:750px) {
+  .vgt-wrap {
+    table.vgt-table {
+      font-size: $font-size + .2 + em;
+    }
+  }
   .notes__content {
-    font-size: 1em;
+    font-size:  $font-size + .2 + em;
   }
 }

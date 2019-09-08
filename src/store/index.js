@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import 'babel-polyfill'
 
-import Firebase from 'Firebase'
+import Firebase from 'Firebase/app'
 import 'Firebase/firestore'
 import config from '../config'
 

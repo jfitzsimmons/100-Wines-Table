@@ -4,7 +4,7 @@
    ! Left this comment to show the component I created to seed firebase
     <Initialize />
     -->
-    <WineContainer v-if="wines" :wines="wines.wines.wine" />
+    <WineContainer v-if="wines" :wines="wines" />
   </div>
 </template>
 
@@ -21,7 +21,7 @@
     },
     computed: {
       ...mapState({
-        wines: 'wines',
+        wines: state => state.wines.wines.wine,
       })
     },
     beforeCreate() {

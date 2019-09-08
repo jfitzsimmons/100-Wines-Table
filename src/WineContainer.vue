@@ -3,6 +3,7 @@
     <vue-good-table
       :columns="columns"
       :rows="wines"
+      styleClass="vgt-table"
       row-style-class="table-row"
       :sort-options="sortoptions"
       :search-options="{
@@ -10,7 +11,8 @@
         skipDiacritics: true,
         placeholder: 'Search Top 100 Wines',
       }"
-      @on-row-mouseenter="onRowMouseover"  />
+      @on-row-mouseenter="onRowMouseover"
+      @on-row-mouseleave="onRowMouseleave" />
 
       <WineNote :note="mutableNote" :pos="mutablePos" />
 </div>
@@ -147,7 +149,7 @@
         filterable: true,
         filterOptions: {
           enabled: true,
-          placeholder: 'Filter Color',
+          placeholder: 'Filter',
           filterValue: '',
           filterDropdownItems: [],
           filterFn: this.columnFilterFn,

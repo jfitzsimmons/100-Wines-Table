@@ -1,16 +1,17 @@
 $light-gray: #eefeff;
-$dark-gray: #606266;
+$dark-gray: #707377;
 $gray: #dcdfe6;
 $dull-blue: #329FEE;
 $bright-blue: #63C9FE;
 $font-size: 0.8;
+$shadow: 4px 6px 8px rgba(0, 0, 0, 0.18);
 
 body {
   font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $dark-gray;
-  overflow:auto;
+  background: $light-gray;
 }
 
 .flex {
@@ -29,30 +30,40 @@ body {
 
 .notes__header {
   font-weight: bold;
-  margin: 0;
 }
 
 .notes__content {
   background: $light-gray;
-  border: 2px solid $gray;
-  border-radius: 6px;
-  padding: 2%;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+  border: 2px solid $bright-blue;
+  border-top: 10px solid $bright-blue;
+  border-radius: 10px;
+  box-shadow: $shadow;
   font-size: $font-size + em;
+  p {
+    padding: 1% 2% 1%;
+    margin: 0;
+  }
 }
 
 .arrow-up {
   width: 0px;
   height: 0px;
   border-left:    20px solid transparent;
-  border-bottom: 20px solid $gray;
+  border-bottom: 20px solid $bright-blue;
   border-right:  20px solid transparent;
   }
 
 .vgt-wrap {
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+  box-shadow: $shadow;
+  margin: 1% 1% 20%;
   table.vgt-table {
     font-size: $font-size + em;
+  }
+  table.vgt-table td{
+    vertical-align: middle;
+  }
+  .vgt-table thead th, .vgt-global-search {
+    background: linear-gradient(#FFF,#edfdfe);
   }
   th span {
     font-weight: bold;
@@ -72,30 +83,29 @@ body {
 }
 
 .color {
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  text-align: center;
   span {
-    border-radius: 6px;
+    border-radius: 15px;
     border: 1px solid $dark-gray;
-    padding: 6px 10px;
+    padding: 2px 6px;
     color: $light-gray;
+    opacity: .8;
   }
   &.red span {
-    background: #730202;
+    background: #C35252;
   }
   &.dessert span {
-    background: #BF0404;
+    background: #FF4444;
   }
   &.white span {
     color: $dark-gray;
   }
   &.sparkling span {
-    background: #FFFBDB;
+    background: #FFFEDE;
     color: $dark-gray;
   }
   &.blush span {
-    background: #D18080;
+    background: #F1A0A0;
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex" v-on:mouseleave="hideNote">
     <vue-good-table
       :columns="columns"
       :rows="wines"
@@ -9,13 +9,18 @@
       :search-options="{
         enabled: true,
         skipDiacritics: true,
-        placeholder: 'Search Top 100 Wines',
+        placeholder: 'Search Wine Spectator’s Top 100 wines of the year',
       }"
       @on-row-mouseenter="onRowMouseover"
-      @on-row-mouseleave="onRowMouseleave" />
-
-      <WineNote :note="mutableNote" :pos="mutablePos" />
-</div>
+      @on-row-mouseleave="onRowMouseleave">
+      <template slot="table-column" slot-scope="props">
+         <span v-on:mouseenter="hideNote" class="full-width">
+            {{props.column.label}}
+         </span>
+      </template>
+    </vue-good-table>
+    <WineNote :note="mutableNote" :pos="mutablePos" />
+  </div>
 </template>
 
 <script>
@@ -23,7 +28,6 @@
   import _ from 'lodash';
   import {mapState} from 'vuex'
   import Vue from 'vue'
-//  let d = null;
 
   export default {
     name: 'WineContainer',
@@ -68,6 +72,11 @@
       onRowMouseleave(row, pageIndex) {
         document.getElementById('notes').style.display = 'none';
       },
+      hideNote() {
+        setTimeout(function() {
+          document.getElementById('notes').style.display = 'none';
+        }, 500);
+      },
       tdClassFunc(row) {
         return "color " + row.color;
       }
@@ -85,6 +94,7 @@
         field: 'score',
         width: '50px',
         type: 'number',
+        tdClass: 'center',
         filterable: true,
         filterOptions: {
           enabled: true,
@@ -126,8 +136,9 @@
       {
         label: 'Vintage',
         field: 'vintage',
-        width: '75px',
+        width: '65px',
         type: 'string',
+        tdClass: 'center',
         filterable: true,
         filterOptions: {
           enabled: true,
@@ -149,7 +160,7 @@
         filterable: true,
         filterOptions: {
           enabled: true,
-          placeholder: 'Filter',
+          placeholder: 'Filter Color',
           filterValue: '',
           filterDropdownItems: [],
           filterFn: this.columnFilterFn,

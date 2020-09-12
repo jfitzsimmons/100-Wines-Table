@@ -1,8 +1,6 @@
 {
   "name": "Top-100-Wines",
-  "description": "A Vue.js project",
   "version": "1.0.0",
-  "author": "jfitzsimmons <jfitzhome@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -34,7 +32,7 @@
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.14.1",
     "sass-loader": "^6.0.6",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",

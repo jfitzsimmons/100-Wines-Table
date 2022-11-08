@@ -1,19 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import 'babel-polyfill'
+import '@babel/polyfill'
 
-import Firebase from 'Firebase/app'
-import 'Firebase/firestore'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 import config from '../config'
-
 import wines from './wines'
 
-Firebase.initializeApp(config)
+firebase.initializeApp(config)
 
 Vue.use(Vuex)
   const state = {
-  db: Firebase.firestore()
+  db: firebase.firestore()
 }
 
 export default new Vuex.Store({

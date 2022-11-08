@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack');
+const HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -75,17 +76,26 @@ module.exports = {
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true,
-    hot: true,
-    open: true,
-  },
   performance: {
-    hints: false
+    maxEntrypointSize: 600000,
+    maxAssetSize: 600000,
   },
-  devtool: 'eval-source-map'
+  devtool: 'source-map',
+  devServer: {
+    allowedHosts: 'auto',
+    client: {
+      overlay: true,
+    },
+    open: true,
+    port: 8080,
+    static: {
+      directory: path.join(__dirname, 'dist'),
+      publicPath: '/',
+    },
+  },
+  plugins: [
+    new HtmlPlugin({ template: 'index.html' })
+]
 }
 
 if (process.env.NODE_ENV === 'production') {

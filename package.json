@@ -9,13 +9,13 @@
     "deploy": "npm run build && mkdir dist/dist && mv dist/*.* dist/dist/ && cp index.html dist/ && firebase deploy"
   },
   "dependencies": {
+    "@babel/polyfill": "~7.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "firebase": "8.10.0",
+    "firebase": "^9.13.0",
     "mem": "^5.1.1",
     "uuid": "^3.3.3",
-    "vue": "^2.6.14",
+    "vue": "^2.7.13",
     "vue-good-table": "^2.18.0",
     "vuex": "^3.1.1"
   },
@@ -25,19 +25,24 @@
     "not ie <= 8"
   ],
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-3": "^6.24.1",
+    "@babel/core": "~7.2",
+    "@babel/plugin-proposal-class-properties": "~7.3",
+    "@babel/plugin-proposal-decorators": "~7.3",
+    "@babel/plugin-proposal-json-strings": "~7.2",
+    "@babel/plugin-syntax-dynamic-import": "~7.2",
+    "@babel/plugin-syntax-import-meta": "~7.2",
+    "@babel/preset-env": "~7.3",
+    "babel-loader": "~8.0",
     "cross-env": "^5.0.5",
     "css-loader": "2.1.1",
     "file-loader": "^1.1.4",
+    "html-webpack-plugin": "^4.5.2",
     "sass": "^1.43.4",
     "sass-loader": "8.0.2",
     "vue-loader": "14.2.4",
     "vue-template-compiler": "^2.4.4",
     "webpack": "4.46.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^3.11.3"
+    "webpack-dev-server": "^4.11.1"
   }
 }
